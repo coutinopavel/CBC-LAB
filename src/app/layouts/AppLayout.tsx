@@ -1,21 +1,31 @@
-import { Link, Outlet } from 'react-router-dom'
+import { useState } from 'react'
+import { Outlet } from 'react-router-dom'
+import { Sidebar } from '../../shared/components/Sidebar.tsx'
+import { Topbar } from '../../shared/components/Topbar.tsx'
+import type { AppOutletContext, SiteName } from '../types.ts'
 
 export function AppLayout() {
+  const [selectedSite, setSelectedSite] = useState<SiteName>('Puerto Vallarta')
+  const [isNavigationOpen, setIsNavigationOpen] = useState(false)
+
+  const outletContext: AppOutletContext = { selectedSite }
+
   return (
     <div className="app-shell">
-      <header className="app-header">
-        <Link className="brand" to="/" aria-label="CBC-LAB, ir al inicio">
-          <span className="brand-mark" aria-hidden="true">
-            CBC
-          </span>
-          <span>CBC-LAB</span>
-        </Link>
-        <span className="prototype-label">Prototipo en desarrollo</span>
-      </header>
-
-      <main className="app-main">
-        <Outlet />
-      </main>
+      <Sidebar
+        isOpen={isNavigationOpen}
+        onClose={() => setIsNavigationOpen(false)}
+      />
+      <div className="app-workspace">
+        <Topbar
+          selectedSite={selectedSite}
+          onSiteChange={setSelectedSite}
+          onMenuOpen={() => setIsNavigationOpen(true)}
+        />
+        <main className="app-main">
+          <Outlet context={outletContext} />
+        </main>
+      </div>
     </div>
   )
 }
