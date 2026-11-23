@@ -1,32 +1,61 @@
-# React + TypeScript + Vite
+# CBC-LAB
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+CBC-LAB es un prototipo en desarrollo para la gestión y digitalización de operaciones de laboratorio. El repositorio se encuentra en una etapa de cimentación técnica y todavía no implementa funcionalidades operativas de laboratorio.
 
-Currently, two official plugins are available:
+## Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- React
+- TypeScript en modo estricto
+- Vite
+- React Router
+- CSS convencional con variables CSS
+- Oxlint
 
-## React Compiler
+## Requisitos
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Node.js compatible con las dependencias declaradas en `package.json`
+- npm
 
-## Expanding the Oxlint configuration
+## Instalación
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```bash
+npm install
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+## Desarrollo
+
+```bash
+npm run dev
+```
+
+Vite mostrará en la terminal la dirección local del entorno de desarrollo.
+
+## Validaciones
+
+```bash
+npm run lint
+npm run typecheck
+npm run build
+```
+
+- `lint` analiza el código con Oxlint.
+- `typecheck` valida los proyectos TypeScript sin generar JavaScript.
+- `build` ejecuta la validación de tipos y genera la compilación de producción.
+
+Para revisar localmente una compilación ya generada:
+
+```bash
+npm run preview
+```
+
+## Estructura inicial
+
+- `src/app`: composición, routing, layouts y páginas estructurales de la aplicación.
+- `src/assets`: contendrá recursos visuales locales cuando sean necesarios.
+- `src/shared`: piezas reutilizables cuando exista un uso compartido real.
+- `src/styles`: variables visuales y estilos globales.
+- `src/modules`: se incorporará progresivamente cuando se implementen dominios funcionales; no se crean módulos vacíos por adelantado.
+
+## Estado actual
+
+La fase actual proporciona una base frontend mínima, routing y una estrategia centralizada de estilos. No incluye backend, autenticación, permisos, formularios operativos ni módulos de negocio.
